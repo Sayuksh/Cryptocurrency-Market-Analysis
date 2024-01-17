@@ -1,0 +1,6 @@
+Flask
+itsdangerous
+jinja2=2.11.3
+werkzeug=0.16.1
+
+
