@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Cypto-Market Analysis
+        </title>
+        <style>
+            h1 {
+                font-size: 100px;
+                font-family: Roboto;
+                color: rgb(0,0,0);
+                text-align: center;
+            }
+            #temp{
+                width: 100%;
+                height: auto;
+
+                object-fit: cover;
+            }
+            .container {
+            margin: 0 auto; /* Adjust margin for centering */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+        }
+        button {
+            padding: 50px 70px;
+            font-size: 40px;
+            margin: 10px; /* Adjust margin for spacing between buttons */
+        } 
+        h2{
+            font-size: 70px;
+            font-family: Roboto;
+            text-align: center;
+        }
+        #para1{
+            font-size: 55px;
+            font-family: Roboto;
+            text-align: center;
+
+        }
+        </style>
+        
+    </head>
+    <body>
+        <h1>
+            Cypto-Market Analysis
+        </h1>
+        <div class="container">
+            <a href="{{ url_for('bitcoin_data') }}"><button>Bitcoin</button></a>
+            <a href="{{ url_for('ethereum_data') }}"><button>Ethereum</button></a>
+        </div>
+        
+        <h2>
+            About the Analysis
+        </h2>
+        <p id="para1">
+            Complete it by tomorrow do it you can do it nfowjfoa;
+            gjvnsvoj
+            afgnafiepafbaofbvf
+            canvasbgwa4elekgrbllgrbliw
+            FLNAWEAWEFIEFF;qFGORJSGNGAOGRJAODGJWOBAUGBAWIAWGI
+        </p>
+        <img id="temp" src="/static/temp.jpeg">
+    </body>
+</html>
