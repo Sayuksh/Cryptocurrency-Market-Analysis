@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
+{% extends "base.html" %}
+{% block title %}
         <title>
             Cypto-Market Analysis
         </title>
@@ -42,8 +41,10 @@
         }
         </style>
         
-    </head>
-    <body>
+        {% endblock %}
+
+        {% block content %}
+        
         <h1>
             Cypto-Market Analysis
         </h1>
@@ -63,5 +64,4 @@
             FLNAWEAWEFIEFF;qFGORJSGNGAOGRJAODGJWOBAUGBAWIAWGI
         </p>
         <img id="temp" src="/static/temp.jpeg">
-    </body>
-</html>
+        {% endblock %}

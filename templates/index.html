@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+{% extends "base.html" %}
+{% block title %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{name}} Analysis</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <style>
         h1 {
             font-size: 85px;
@@ -18,28 +21,41 @@
             font-size: 75px;
             font-family: Roboto;
             text-align: center;
-
         }
-
-
-        .inputdiv {
-            margin: 0 auto; 
-            /* Adjust margin for centering */
+        .inputdiv{
+            margin: 0 auto; /* Adjust margin for centering */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            font-size: 65px;
-            height: 100px;
-            width: 450px;
-            margin-bottom: 30px;
         }
 
+        #date {
+            font-size: 55px;
+            font-family: Roboto;
+            text-align: center;
+        }
+
+        button {
+            padding: 0.35% 0.9%;
+            font-size: 40px;
+            margin: 10px; /* Adjust margin for spacing between buttons */
+        } 
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            /* Adjust as needed */
+        }
+        .inputdiv label{
+            font-size: 55px ;
+            font-family: Roboto;
+
+        }
     </style>
+{% endblock %}
 
-</head>
 
-<body>
+{% block content %}
     <div class="heading">
         <h1>{{name}} Analysis</h1>
         <h1>{{ name }} ({{ symbol }})</h1>
@@ -51,19 +67,15 @@
         <p class="para">24h High: ${{ high_24h }}</p>
         <p class="para">24h Low: ${{ low_24h }}</p>
         <p class="para"> Date and time: {{date_and_time}}</p>
-
     </div>
-    <form action="">
-        <td>
-            <input type="date" name="date" id="date" class="inputdiv">
-            <input type="submit" value="Submit" class="inputdiv">
-        </td>
+
+    <form action="{{ url_for('process_date') }}" method="post" >
+        <div class="inputdiv">
+            <label for="date">Select Date:</label>
+            <input type="date" name="date" id="date">
+        </div>
+        <div class="button-container">
+            <button type="submit">Submit</button>
+        </div>
     </form>
-    <div>
-
-    </div>
-
-
-</body>
-
-</html>
+    {% endblock %}

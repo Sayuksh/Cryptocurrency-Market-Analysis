@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}
+<title>
+    Sign in/Register
+</title>
+<style>
+    .container {
+        margin-top: 150px;
+        font-size: 50px;
+        font-family: Roboto;
+    }
+
+    .form-control {
+        font-size: 50px;
+        /* Adjust the font size as needed */
+        padding: 25px;
+        /* Adjust the padding as needed */
+    }
+
+    .form-label {
+        font-size: 50px;
+        /* Adjust the font size as needed */
+
+        /* Adjust the padding as needed */
+        padding: 25px;
+    }
+
+    .btn btn-primary btn-block mb-4 {
+        font-size: 50px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% with message = get_flashed_messages() %}
+{% if message %}
+{% for msg in message %}
+<p style="font-size: 35px; margin: 0,auto;">{{ msg }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="container mt-10">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Pills navs -->
+            <ul class="nav nav-pills nav-justified mb-4" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="tab-login" data-mdb-pill-init href="{{ url_for('login') }}"
+                        role="tab" aria-controls="pills-login" aria-selected="false">Login</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="tab-register" data-mdb-pill-init href="{{ url_for('register') }}" role="tab"
+                        aria-controls="pills-register" aria-selected="true">Register</a>
+                </li>
+            </ul>
+            <!-- Pills navs -->
+
+            <!-- Pills content -->
+            <div class="tab-content">
+                <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                    <form method="post">
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="loginName">Email or username</label>
+                            <input type="email" id="loginName" name="email" class="form-control" />
+
+                        </div>
+
+                        <!-- Password input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" class="form-control" />
+
+                        </div>
+
+                        <!-- 2 column grid layout -->
+                        <div class="row mb-4">
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <div class="form-check mb-3 mb-md-0">
+                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                                    <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <!-- Simple link -->
+                                <a href="{{ url_for('register') }}">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4" style="font-size: 40px;">Sign
+                            in</button>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Not a member? <a href="#!">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                    <form method="post">
+
+                        <!-- Name input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="registerName">Name</label>
+                            <input type="text" id="registerName" class="form-control" name="name" />
+                        </div>
+
+                        <!-- Username input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="registerUsername">Username</label>
+                            <input type="text" id="registerUsername" class="form-control" name="username"/>
+                            
+                        </div>
+
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="registerEmail">Email</label>
+                            <input type="email" id="registerEmail" class="form-control" name="email" />
+                            
+                        </div>
+
+                        <!-- Password input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" class="form-control" name="password" />
+                            
+                        </div>
+
+                        <!-- Repeat Password input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                            <input type="password" id="registerRepeatPassword" class="form-control" name="rpassword" />
+                            
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div class="form-check d-flex justify-content-center mb-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                                aria-describedby="registerCheckHelpText" />
+                            <label class="form-check-label" for="registerCheck">
+                                I have read and agree to the terms
+                            </label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-3 " style="font-size: 40px;">Signin</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pills content -->
+{% endblock %}
