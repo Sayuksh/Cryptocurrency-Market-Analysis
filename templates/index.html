@@ -70,12 +70,12 @@
     </div>
 
     <form action="{{ url_for('process_date') }}" method="post" >
-        <div class="inputdiv">
+        <div class="inputdiv" style="height: auto;width: auto;">
             <label for="date">Select Date:</label>
-            <input type="date" name="date" id="date">
+            <input type="date" name="date" id="date" style="height: auto;width: auto;">
         </div>
         <div class="button-container">
-            <button type="submit">Submit</button>
+            <button type="submit" >Submit</button>
         </div>
     </form>
     {% endblock %}

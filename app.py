@@ -2,6 +2,7 @@ from flask import Flask,jsonify,render_template,request,session,redirect,url_for
 from datetime import datetime,timedelta
 import requests
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import IntegrityError
 
 app=Flask(__name__)
 COINGECKO_API_URL = 'https://api.coingecko.com/api/v3/coins'
@@ -34,6 +35,15 @@ def welcome():
     else:
         return redirect(url_for('login'))
 
+def fetch_data(coin):
+    url = f'https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies=usd'
+    response = requests.get(url)
+    data = response.json()
+    return data['bitcoin']['usd']
+
+# def predictive_model():
+    
+
 @app.route('/bitcoin')
 def bitcoin_data():
     if "username" in session:
@@ -42,6 +52,7 @@ def bitcoin_data():
         timestamp = datetime.timestamp(now)
         response = requests.get(f"{COINGECKO_API_URL}/bitcoin")
         bitcoin_data = response.json()
+        
 
     # Extract relevant information
         name = bitcoin_data['name']
@@ -74,15 +85,6 @@ def ethereum_data():
                            market_cap=market_cap, high_24h=high_24h, low_24h=low_24h)
         
         
-    else:
-        return redirect(url_for('login'))
-@app.route('/process_date', methods=['POST'])
-def process_date():
-    if "username" in session:
-        selected_date = request.form.get('date')
-    # Do something with the selected_date, for example, print it
-        print(f"Selected Date: {selected_date}")
-        return f"Selected Date: {selected_date}"
     else:
         return redirect(url_for('login'))
 
@@ -133,7 +135,13 @@ def register():
             db.session.commit()
             flash("Registration successful! You can now log in.", "success")
             return redirect(url_for("login"))
+        except IntegrityError as e:
+            # Handle the unique constraint violation (e.g., username already exists)
+            db.session.rollback()
+            flash("Registration failed. Choose a new username.", "error")
+            return redirect(url_for("register"))
         except Exception as e:
+
             # Handle any exceptions (e.g., unique constraint violation)
             db.session.rollback()
             flash(f"Registration failed: {str(e)}", "error")

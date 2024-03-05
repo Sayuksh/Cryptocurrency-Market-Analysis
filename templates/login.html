@@ -5,30 +5,6 @@
 </title>
 <style>
 
-    .container {
-        margin-top: 150px;
-        font-size: 50px;
-        font-family: Roboto;
-    }
-
-    .form-control {
-        font-size: 50px;
-        /* Adjust the font size as needed */
-        padding: 25px;
-        /* Adjust the padding as needed */
-    }
-
-    .form-label {
-        font-size: 50px;
-        /* Adjust the font size as needed */
-
-        /* Adjust the padding as needed */
-        padding: 25px;
-    }
-
-    .btn btn-primary btn-block mb-4 {
-        font-size: 50px;
-    }
 
 </style>
 {% endblock %}
@@ -43,7 +19,7 @@
     {% endif %}
 {% endwith %}
 
-<div class="container mt-10">
+<div class="container mt-10 ">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <!-- Pills navs -->
@@ -89,7 +65,7 @@
 
                             <div class="col-md-6 d-flex justify-content-center">
                                 <!-- Simple link -->
-                                <a href="#!">Forgot password?</a>
+                                <a href="#!" style="color:black">Forgot password?</a>
                             </div>
                         </div>
 
@@ -98,8 +74,8 @@
                             in</button>
 
                         <!-- Register buttons -->
-                        <div class="text-center">
-                            <p>Not a member? <a href="{{ url_for('register') }}">Register</a></p>
+                        <div class="text-center" style="color: black;">
+                            <p>Not a member? <a href="{{ url_for('register') }}" style="color:black">Register</a></p>
                         </div>
                     </form>
                 </div>
@@ -166,8 +142,8 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-3">Sign
-                            in</button>
+                        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-3"> Sign in
+                        </button>
                     </form>
                 </div>
             </div>
